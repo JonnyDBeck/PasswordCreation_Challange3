@@ -15,26 +15,26 @@ generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
 
-  //decicisons are placed intpo an array to keep multiple vars from being made
-  //in order: Length, lowercase, uppercase, numeric, special
+  //Decisions are placed into an array to keep multiple vars from being made
+  //In order: Length, lowercase, uppercase, numeric, special
   var decide = [10, true, true, true, true];
 
-  //prompt for length
+  //Prompt for length
   decide[0] = window.prompt("Number of characters?\n(whole number from 8-128; empty prompt will default to 10)");
   if (decide[0] == ""){decide[0] = 10;}
 
-  //edge cases (null, integer, range)
+  //Edge cases (null, integer, range)
   if (decide[0] == null){window.alert("Process cancelled"); return "Cancelled";}
   if (!Number.isInteger(+decide[0])){window.alert("Input is not an Integer"); return "Cancelled";}
   if (decide[0] > 128 || decide[0] < 8){window.alert("Boundaries for number exceed or subceed range"); return "Cancelled";}
 
-  //other customization options
+  //Other customization options
   decide[1] = window.confirm("Do you want lowercases in your password?\n(Confirm = yes; Cancel = no)")
   decide[2] = window.confirm("Do you want uppercases in your password?\n(Confirm = yes; Cancel = no)")
   decide[3] = window.confirm("Do you want numbers in your password?\n(Confirm = yes; Cancel = no)")
   decide[4] = window.confirm("Do you want special characters in your password?\n(Confirm = yes; Cancel = no)")
 
-  //edge case
+  //Edge case
   if (!decide[1] && !decide[2] && !decide[3] && !decide[4]){window.alert("Password contains nothing"); return "Cancelled";}
 
   //requi will later check if the password created meets requirements
@@ -44,7 +44,7 @@ function generatePassword(){
   //looped for the tiny case that characters overwrite other important characters
   while (!requi){
 
-    //password variable instatiation
+    //password variable instantiation
     var pass = ""
 
     //base will store what was used as a base
@@ -77,7 +77,7 @@ function generatePassword(){
     //replacing characters based on averages within password making
     //we do not have to do lower case since if that is true, it will always be the base
 
-    //about Half or less of the password will be converted to uppercase
+    //about half or less of the password will be converted to uppercase
     if (decide[2] && base != 2){
       for (i = 0; i < Math.floor(decide[0]/2); i++){
         var rand = Math.floor(Math.random() * decide[0]);
